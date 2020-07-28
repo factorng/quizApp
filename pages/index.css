@@ -1,0 +1,109 @@
+@import url('../fonts/fonts.css');
+
+.quiz__page {
+    background-color: #000;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    box-sizing: border-box;
+    flex-wrap: wrap;
+    min-height: 100vh;
+    min-width: 380px;
+    padding: 2%;
+    font-family: 'Inter', Arial, sans-serif;
+    text-rendering: optimizeLegibility;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+}
+
+.header {
+    color: white;
+    display: flex;
+    flex-direction: column;
+    margin-left: 2%;
+    justify-content: space-between;
+    height: 100vh;
+    box-sizing: border-box;
+    flex-basis: 30%;
+    flex-grow: 1;
+}
+
+.header__title {
+    font-weight: 500;
+    color: white;
+    font-size: 4rem;
+    max-width: 80%;
+}
+
+.header__menu {
+    margin: 0;
+    padding: 0;
+}
+.menu {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+.menu__item {
+    list-style: none;
+    margin-bottom: 3rem;
+    font-size: 2.5rem;
+    color: grey;
+}
+
+.card {
+    flex-basis: 60%;
+    box-sizing: border-box;
+    background-color: #fff;
+    border-radius: 10px;
+    height: 80vh;
+    align-self: center;
+    padding: 3%;
+    margin-left: 2%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    flex-grow: 1;
+}
+.card__question-title {
+    font-size: 2rem;
+    border-bottom: 1px solid lightgray;
+    line-height: 3rem;
+    margin: 0;
+}
+.card__question {
+    margin: 0;
+    letter-spacing: .2rem;
+}
+.card__answer {
+    display: block;
+    padding: 20px;
+    background-color: lightgray;
+    border-radius: 10px;
+    color: #fff;
+    font-size: 1.3rem;
+}
+.card__answer_red {
+    background-color: red;
+}
+.card__answer_green {
+    background-color: green;
+}
+.card__button {
+    align-self: start;
+    padding: 1rem 3rem;
+    color: white;
+    background-color: black;
+    border-radius: 10px;
+    border: 0;
+    font-size: 1.8rem;
+}
+.card__answer-icons {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    height: 8vh;
+}
+.card__answer-icon {
+    width: 4rem;
+}
