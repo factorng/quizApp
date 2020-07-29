@@ -54,7 +54,10 @@
     font-size: 2.5rem;
     color: grey;
 }
-
+.cards {
+  flex-basis: 60%;
+  flex-grow: 1;
+}
 .card {
     box-sizing: border-box;
     background-color: #fff;
@@ -66,7 +69,6 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    flex-grow: 4;
 }
 .card__question-title {
     font-size: 2rem;
