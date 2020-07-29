@@ -7,3 +7,5 @@ const api = new Api({
 api.getQuestion(10, 18, 'hard').then(res => console.log(res));
 
 api.getCategories();
+
+console.log('test')
