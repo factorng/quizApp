@@ -3,4 +3,4 @@ import Card from '../scripts/components/Card.js';
 
 const cardTemplate = document.querySelector(cardTemplateSelector);
 
-const card = new Card(cardTemplate);
+const card = new Card(cardTemplate, apiObject);
