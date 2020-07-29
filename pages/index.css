@@ -80,6 +80,9 @@
     margin: 0;
     letter-spacing: .2rem;
 }
+.card__answers {
+
+}
 .card__answer {
     display: block;
     padding: 20px;
@@ -87,6 +90,7 @@
     border-radius: 10px;
     color: #fff;
     font-size: 1.3rem;
+    margin: 3rem 0;
 }
 .card__answer_red {
     background-color: red;
@@ -112,3 +116,4 @@
 .card__answer-icon {
     width: 4rem;
 }
+
