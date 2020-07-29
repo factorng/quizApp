@@ -4,11 +4,12 @@ import {Api} from './components/Api.js';
 const data = {
   question: 'Who let the dogs out?',
   answers: ['Ban', 'Danila', 'Misha', 'Vitalic'],
+  rightAnswer: 'Danila',
   number: 3,
   total: 6,
 };
 const question = new Question(data);
-question.getQuestionElement();
+question.renderCard();
 
 
 const api = new Api({
