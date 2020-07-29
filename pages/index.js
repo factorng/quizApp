@@ -1,8 +1,9 @@
 import { Api } from '../components/Api.js';
 
-const api = new Api ({
-  url: 'https://opentdb.com/api.php?amount=10&category=18'
+const api = new Api({
+  url: 'https://opentdb.com'
 })
 
-api.getQuestion().then(res => console.log(res));
+api.getQuestion(10, 18, 'hard').then(res => console.log(res));
 
+api.getCategories();
