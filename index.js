@@ -11,7 +11,6 @@ import {
 } from './components/utils/constants.js';
 
 const cardsContainer = document.querySelector(cardsSelector);
-const buttonNext = document.querySelector(buttonNextSelector);
 let countQuestions = 0;
 
 const api = new Api({
@@ -29,16 +28,36 @@ const card = new Card(
         console.log(res.results[0]);
         const question = new Question(data);
         question.renderCard();
+        const buttonNext = document.querySelector(buttonNextSelector);
+        buttonNext.addEventListener('click', handleNextClick);
       });
-  },
-  buttonNext);
+  });
 
-
+const handleNextClick = () => {
+  if (countQuestions === 10) {
+    console.log(countQuestions)
+    document.querySelector('.card').remove();
+  } else {
+    countQuestions += 1;
+    console.log(countQuestions)
+    document.querySelector('.card').remove();
+    const question = new Question(datatwo);
+    question.renderCard();
+  }
+}
 
 const data = {
   question: 'Who let the dogs out?',
   answers: ['Ban', 'Danila', 'Misha', 'Vitalic'],
   rightAnswer: 'Danila',
+  number: 3,
+  total: 6,
+};
+
+const datatwo = {
+  question: 'What does the fox say?',
+  answers: ['Wa-pa-pa-pa-pa-pa-pow!', 'Hatee-hatee-hatee-ho!', 'Joff-tchoff-tchoffo-tchoffo-tchoff!', 'Tchoff-tchoff-tchoffo-tchoffo-tchoff!'],
+  rightAnswer: 'Wa-pa-pa-pa-pa-pa-pow!',
   number: 3,
   total: 6,
 };
