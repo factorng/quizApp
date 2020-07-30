@@ -53,7 +53,7 @@ export class Question {
    * кнопку с вопросом
    */
   renderCard() {
-    document.querySelector('.cards').append(this._getQuestionElement());
+    document.querySelector('.main').append(this._getQuestionElement());
     this._answers.forEach((answer) => {
       document.querySelector('.card__answers').append(this._getAnswerElement(answer));
     });
@@ -71,19 +71,19 @@ export class Question {
    * от ответа пользователя
    */
   _addEventListeners() {
-    document.addEventListener('click', (evt) => {
+    document.addEventListener('click', this._questionClickHandler = (evt) => {
       if (evt.target.classList.contains('card__answer')) {
         if (evt.target.innerText == this._rightAnswer) {
           evt.target.classList.add('card__answer_green');
           this._userAnswer = true;
+          document.removeEventListener('click', this._questionClickHandler);
         } else {
           evt.target.classList.add('card__answer_red');
           document.querySelector('#right').classList.add('card__answer_green');
           //это мне самому не оч нравится, завтра подумаю как переделать
+          document.removeEventListener('click', this._questionClickHandler);
         }
       }
-    }, {
-      once: true
     });
   }
 }

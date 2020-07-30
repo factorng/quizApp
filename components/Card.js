@@ -8,9 +8,9 @@ export default class Card {
   _render(titleText, buttonText) {
     const title = document.createElement('div');
     const start = document.createElement('button');
-    title.className = 'cards__greeting';
+    title.className = 'main__greeting';
     title.innerHTML = titleText;
-    start.className = 'cards__button';
+    start.className = 'main__button';
     start.innerHTML = buttonText;
     start.addEventListener('click', () => {
       this._handleButtonClick()

@@ -1,2 +1,2 @@
-export const cardsSelector = '.cards';
-export const buttonNextSelector = '.card__button';
+export const cardsSelector = '.main';
+export const buttonNextSelector = '.card__button-next';
