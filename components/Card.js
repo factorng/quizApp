@@ -1,5 +1,5 @@
 export default class Card {
-  constructor(container, handleButtonClick) {
+  constructor(container, handleButtonClick, res) {
     this._handleButtonClick = handleButtonClick;
     this._container = container;
   }
