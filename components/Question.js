@@ -7,8 +7,8 @@
 export class Question {
   constructor(data) {
     this._question = data.question;
-    this._answers = Array.from(data.answers);
-    this._rightAnswer = data.rightAnswer;
+    this._answers = Array.from(data.incorrect_answers);
+    this._rightAnswer = data.correct_answer;
     this._questionNumber = data.number;
     this._questionTotal = data.total;
     this._userAnswer = false;
@@ -43,9 +43,6 @@ export class Question {
   _getAnswerElement(answer) {
     this._answerElement = this._getAnswerTemplate();
     this._answerElement.querySelector('.card__answer').innerText = answer;
-    if(answer == this._rightAnswer) {
-       this._answerElement.querySelector('.card__answer').id = 'right';
-    }
     return this._answerElement;
   }
   /**
@@ -57,6 +54,9 @@ export class Question {
     this._answers.forEach((answer) => {
       document.querySelector('.card__answers').append(this._getAnswerElement(answer));
     });
+    const rightAnswerElement = this._getAnswerElement(this._rightAnswer);
+    rightAnswerElement.querySelector('.card__answer').id = 'right';
+    document.querySelector('.card__answers').append(rightAnswerElement);
     this._addEventListeners();
   }
   /**
