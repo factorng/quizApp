@@ -23,27 +23,29 @@ const card = new Card(
     api.getQuestion(10, 18, 'hard')
       .then(res => {
         countQuestions = 0;
-        document.querySelector('.cards__greeting').classList.add('cards__greeting_hidden');
-        document.querySelector('.cards__button').classList.add('cards__button_hidden');
-        console.log(res.results[0]);
-        const question = new Question(data);
-        question.renderCard();
-        const buttonNext = document.querySelector(buttonNextSelector);
-        buttonNext.addEventListener('click', handleNextClick);
+        document.querySelector('.cards__greeting').remove();
+        document.querySelector('.cards__button').remove();
+        newQuestion(data);
       });
   });
 
 const handleNextClick = () => {
   if (countQuestions === 10) {
-    console.log(countQuestions)
     document.querySelector('.card').remove();
+    card.renderResults();
   } else {
     countQuestions += 1;
     console.log(countQuestions)
     document.querySelector('.card').remove();
-    const question = new Question(datatwo);
-    question.renderCard();
+    newQuestion(datatwo);
   }
+}
+
+const newQuestion = (data) => {
+  const question = new Question(data);
+  question.renderCard();
+  const buttonNext = document.querySelector(buttonNextSelector);
+  buttonNext.addEventListener('click', handleNextClick);
 }
 
 const data = {
