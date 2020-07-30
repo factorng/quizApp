@@ -1,13 +1,13 @@
 @import url('../fonts/fonts.css');
 
 .root {
-    font-family: 'Inter', Arial, sans-serif;
-    text-rendering: optimizeLegibility;
-    -moz-osx-font-smoothing: grayscale;
-    -webkit-font-smoothing: antialiased;
-    padding: 2%;
-    background-color: black;
-    box-sizing: border-box;
+  font-family: 'Inter', Arial, sans-serif;
+  text-rendering: optimizeLegibility;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  padding: 2%;
+  background-color: black;
+  box-sizing: border-box;
 }
 
 .quiz__page {
@@ -28,51 +28,51 @@
   display: flex;
   flex-direction: column;
   margin: 0 2%;
-  justify-content: center;
+  justify-content: space-around;
   height: 90vh;
   box-sizing: border-box;
   flex-basis: 30%;
 }
 
 .header__greeting-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 
 }
 
 .header__greeting {
-    font-weight: 500;
-    color: white;
-    font-size: 4rem;
-    text-align: center;
+  font-weight: 500;
+  color: white;
+  font-size: 4rem;
+  text-align: center;
 }
 
 .header__start {
-    min-width: 200px;
-    min-height: 50px;
-    border-radius: 10px;
-    margin: 0 auto;
-    padding: 10px 20px;
-    font-weight: 500;
-    font-size: 4rem;
-    text-align: center;
-    transition: all linear .3s;
+  min-width: 200px;
+  min-height: 50px;
+  border-radius: 10px;
+  margin: 0 auto;
+  padding: 10px 20px;
+  font-weight: 500;
+  font-size: 4rem;
+  text-align: center;
+  transition: all linear .3s;
 }
 
 .header__start:hover {
-    background-color: #000;
-    color: #fff;
-    cursor: pointer;
-    box-shadow: #fff 0px 0px 20px;
-    transition: all linear .3s;
+  background-color: #000;
+  color: #fff;
+  cursor: pointer;
+  box-shadow: #fff 0px 0px 20px;
+  transition: all linear .3s;
 }
 
 .header__title {
-    font-weight: 500;
-    color: white;
-    font-size: 3rem;
-    max-width: 80%;
+  font-weight: 600;
+  color: white;
+  font-size: 3rem;
+  max-width: 80%;
 }
 
 .header__menu {
@@ -88,10 +88,12 @@
 
 .menu__item {
   list-style: none;
-  margin-bottom: 3rem;
+  margin-bottom: 1rem;
   font-size: 2.5rem;
+  font-weight: 500;
   color: grey;
 }
+
 .main {
   flex-basis: 60%;
   flex-grow: 1;
@@ -100,28 +102,45 @@
   flex-direction: column;
   align-items: center;
 }
+
 .main__button {
   padding: 2rem 6rem;
   border-radius: 10px;
   font-size: 2rem;
   align-self: center;
+  cursor: pointer;
+  transition: opacity linear .2s;
 }
+
+.main__button:hover {
+  opacity: .7;
+  transition: opacity linear .2s;
+}
+
 .main__greeting {
   font-size: 3rem;
   color: white;
   text-align: center;
   padding-bottom: 2rem;
 }
+
+.main__description {
+  font-size: 2rem;
+  color: white;
+  text-align: center;
+  padding-bottom: 2rem;
+}
+
 .card {
-    box-sizing: border-box;
-    background-color: #fff;
-    border-radius: 10px;
-    align-self: center;
-    padding: 3%;
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+  box-sizing: border-box;
+  background-color: #fff;
+  border-radius: 10px;
+  align-self: center;
+  padding: 3%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .card__question-title {
@@ -132,12 +151,11 @@
 }
 
 .card__question {
-  margin: 0;
+  margin: 20px 0 0;
   letter-spacing: .2rem;
+  font-size: 1.5rem;
 }
-.card__answers {
 
-}
 .card__answer {
   display: block;
   padding: 20px;
@@ -146,6 +164,7 @@
   color: #fff;
   font-size: 1.3rem;
   margin: 3rem 0;
+  cursor: pointer;
 }
 
 .card__answer_red {
@@ -164,6 +183,7 @@
   border-radius: 10px;
   border: 0;
   font-size: 1.8rem;
+  cursor: pointer;
 }
 
 .card__answer-icons {
@@ -177,4 +197,3 @@
   width: 3rem;
   height: 3rem;
 }
-

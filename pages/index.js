@@ -25,27 +25,31 @@ api.getQuestion(10, 18, 'hard')
       () => {
         countQuestions = 1;
         document.querySelector('.main__greeting').remove();
+        document.querySelector('.main__description').remove();
         document.querySelector('.main__button').remove();
-        newQuestion(res.results[0]);
+        newQuestion(res.results[0], countQuestions, []);
       });
 
-    const handleNextClick = () => {
+    const handleNextClick = (question) => {
+      let answersArr = question.getAnswersData()
       if (countQuestions === 5) {
         document.querySelector('.card').remove();
-        card.renderResults();
+        card.renderResults(answersArr);
       } else {
         countQuestions += 1;
         document.querySelector('.card').remove();
-        newQuestion(res.results[countQuestions]);
+        newQuestion(res.results[countQuestions], countQuestions, answersArr);
       }
     }
 
     card.renderTitleMenu()
 
-    function newQuestion(obj) {
-      const question = new Question(obj);
+    function newQuestion(obj, questionNumber, answersArr) {
+      const question = new Question(obj, questionNumber, 5, answersArr);
       question.renderCard();
       const buttonNext = document.querySelector(buttonNextSelector);
-      buttonNext.addEventListener('click', handleNextClick);
+      buttonNext.addEventListener('click', () => {
+        handleNextClick(question);
+      });
     }
   })

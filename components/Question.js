@@ -8,7 +8,7 @@ import {randomInteger} from './utils/utils.js';
  */
 
 export class Question {
-  constructor(data, questionNumber, questionTotal = 5, questionsAnswers = [true]) {
+  constructor(data, questionNumber, questionTotal = 5, questionsAnswers = []) {
     this._question = data.question;
     this._answers = Array.from(data.incorrect_answers);
     this._rightAnswer = data.correct_answer;
