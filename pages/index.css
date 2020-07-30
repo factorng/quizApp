@@ -169,10 +169,12 @@
 .card__answer-icons {
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
   justify-content: flex-start;
-  height: 8vh;
 }
 
 .card__answer-icon {
-  width: 4rem;
+  width: 3rem;
+  height: 3rem;
 }
+

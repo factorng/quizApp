@@ -32,20 +32,19 @@
         <h3 class="card__question">Как можно объявить переменную в JavaScript?</h3>
         <div class="card__answers"></div>
         <button class="card__button-next">Далее</button>
-        <div class="card__answer-icons">
-            <img class="card__answer-icon" src="./images/Close_Icon.svg" alt="неверный ответ">
-            <img class="card__answer-icon" src="./images/Tick_Mark.svg" alt="верный ответ">
-            <img class="card__answer-icon" src="./images/Tick_Mark.svg" alt="верный ответ">
-            <img class="card__answer-icon" src="./images/Close_Icon.svg" alt="неверный ответ">
-            <img class="card__answer-icon" src="./images/Close_Icon.svg" alt="неверный ответ">
+        <div class="card__answer-icons"></div>
         </div>
     </div>
    </template>
    <template id="answer">
     <div class="card__answer">variable carName</div>
    </template>
+   <template id="answer-icon-false">
+    <img class="card__answer-icon answer-icon-false" src="./images/Close_Icon.svg" alt="неверный ответ">
+   </template>
+   <template id="answer-icon-true">
+    <img class="card__answer-icon answer-icon-true" src="./images/Tick_Mark.svg" alt="верный ответ">
+   </template>
    <script src="./pages/index.js" type="module"></script>
-
-
 </body>
 </html>
