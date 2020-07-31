@@ -6,6 +6,9 @@ import {
 } from '../components/Api.js';
 import Card from '../components/Card.js';
 import {
+  ScoreCalculator
+} from '../components/ScoreCalculator.js';
+import {
   cardsSelector,
   buttonNextSelector
 } from '../components/utils/constants.js';
