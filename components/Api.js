@@ -15,9 +15,9 @@ export class Api {
 /**
  * метод для получения списка вопросов и ответов через api https://opentdb.com/
  *
- * @param {number} questionAmount количество вопросов
- * @param {number} category выбор категории, можно посмотреть методом getCategories()
- * @param {string} difficulty выбор сложности вопросов, всего три вида: easy, medium, hard
+ * @param {Number} questionAmount количество вопросов
+ * @param {Number} category выбор категории, можно посмотреть методом getCategories()
+ * @param {String} difficulty выбор сложности вопросов, всего три вида: easy, medium, hard
  *
  * res.results выведет сразу массив вопросов
  */
