@@ -1,0 +1,16 @@
+@import url('./__greeting-container/header__greeting-container.css');
+@import url('./__greeting/header__greeting.css');
+@import url('./__start/header__start.css');
+@import url('./__title/header__title.css');
+@import url('./__menu/header__menu.css');
+
+.header {
+  color: white;
+  display: flex;
+  flex-direction: column;
+  margin: 0 2%;
+  justify-content: space-around;
+  height: 90vh;
+  box-sizing: border-box;
+  flex-basis: 30%;
+}

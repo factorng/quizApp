@@ -1,0 +1,9 @@
+.card__answer-icons {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  height: 3rem;
+  border-top: 1px solid lightgray;
+  margin: 2rem;
+}

@@ -1,0 +1,6 @@
+.card__question-title {
+  font-size: 2rem;
+  border-bottom: 1px solid lightgray;
+  line-height: 3rem;
+  margin: 0;
+}

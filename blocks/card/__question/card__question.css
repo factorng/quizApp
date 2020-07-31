@@ -1,0 +1,6 @@
+.card__question {
+  margin: 20px 0 0;
+  letter-spacing: .2rem;
+  font-size: 1.5rem;
+  min-height: 6rem;
+}
