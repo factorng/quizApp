@@ -70,7 +70,7 @@ export class ScoreCalculator {
       this._total++;
       if (document.querySelector('.main').contains(document.querySelector('.main__timer'))) {
         clearInterval(timer);
-        document.querySelector(totalTimer).textContent = this._convertToTime(this._total);
+        document.querySelector(totalTimer).textContent = 'Ваше время: ' + this._convertToTime(this._total);
       }
     }, 1000)
   }
