@@ -35,11 +35,11 @@ api.getQuestion(10, 18, 'hard')
         newQuestion(res.results[0], countQuestions, []);
       });
 
-    const handleNextClick = (question) => {
+    const handleNextClick = (question, calculateScore) => {
       let answersArr = question.getAnswersData()
       if (countQuestions === 5) {
         document.querySelector('.card').remove();
-        card.renderResults(answersArr);
+        card.renderResults(calculateScore(answersArr));
       } else {
         countQuestions += 1;
         document.querySelector('.card').remove();
@@ -74,19 +74,19 @@ api.getQuestion(10, 18, 'hard')
       const scoreCalculator = new ScoreCalculator(
         buttonNext,
         question,
-        (n) => {
+        () => {
           timerFunction(question);
         });
-        const total = 0;
-        if (countQuestions === 1) {
+      const total = 0;
+      if (countQuestions === 1) {
         scoreCalculator.setTotalTimer('.main__timer')
-        }
+      }
       const cardTimer = document.querySelector(cardTimerSelector);
       scoreCalculator.setAnswerTimer(cardTimer);
       buttonNext.setAttribute('disabled', 'disabled');
       buttonNext.classList.add('card__button-next_disabled');
       buttonNext.addEventListener('click', () => {
-        handleNextClick(question);
+        handleNextClick(question, scoreCalculator.calculateAnswerScore);
       });
     }
   })

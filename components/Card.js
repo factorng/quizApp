@@ -1,11 +1,21 @@
+/**
+ * Класс для рендера вопросов в разметку
+ * @typedef {Object} Card
+ */
+
 export default class Card {
   constructor(container, handleButtonClick) {
     this._handleButtonClick = handleButtonClick;
     this._container = container;
   }
 
-  //общий функционал рендера титульного экрана и экрана результатов
-  _render(titleText,descriptionText, buttonText) {
+  /**
+   * метод рендера общей части страниц приветствия и результата
+   * @param {String} titleText текст заголовка
+   * @param {String} descriptionText текст описания
+   * @param {String} buttonText текст кнопки
+   */
+  _render(titleText, descriptionText, buttonText) {
     const title = document.createElement('div');
     const description = document.createElement('div');
     const timer = document.createElement('div');
@@ -27,38 +37,30 @@ export default class Card {
   }
 
   /**
-   * метод рендера титульного экрана с приветствием и в будущем с настройками
+   * метод рендера титульного экрана с приветствием
    */
   renderTitleMenu() {
     this._container.querySelector('.main__greeting').remove();
     this._render('Добро пожаловать в Quiz!', 'Для успешного прохождения теста наберите не менее 8 очков, за каждый правильный ответ даётся 2 очка. Удачи!', 'Поехали!');
   }
 
-  //метод рендера экрана с настройками
-  renderSettings() {
-
-  }
-
-  //рендер экрана с результатами
-  renderResults(resultsArr) {
-    let result = 0;
-    resultsArr.forEach(answer => {
-      if (answer) {
-        result++;
-      }
-    })
-
-    if (result * 2 >= 8) {
-      this._render('Поздравляем с успешным прохождением!',`Вы набрали ${result*2} из 10 баллов.`, 'Ещё раз');
-    } else if (result * 2 >= 5 && result < 8) {
-      this._render('Надо ещё немного постараться.', `Вы набрали ${result*2} из 10 баллов.`, 'Ещё раз');
+  /**
+   * метод рендера экрана с результатами
+   * @param {Number} score количество очков
+   */
+  renderResults(score) {
+    if (score >= 8) {
+      this._render('Поздравляем с успешным прохождением!', `Вы набрали ${score} из 10 баллов.`, 'Ещё раз');
+    } else if (score >= 5 && result < 8) {
+      this._render('Надо ещё немного постараться.', `Вы набрали ${score} из 10 баллов.`, 'Ещё раз');
     } else {
-      this._render('К сожалению вы проиграли...', `Вы набрали ${result*2} из 10 баллов.`, 'Ещё раз');
+      this._render('К сожалению вы проиграли...', `Вы набрали ${score} из 10 баллов.`, 'Ещё раз');
     }
-
   }
 
-  //метод навешивания слушателя на кнопку далее
+  /**
+   *метод навешивания слушателя на кнопку далее
+   */
   addEventListenerNextButton(buttonNext, handleClick) {
     buttonNext.addEventSelector('click', () => {
       handleClick

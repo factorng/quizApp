@@ -13,14 +13,14 @@ export class ScoreCalculator {
    * @param {Array} data массив с данными ответов
    */
   calculateAnswerScore(data) {
-    this._totalScore = 0;
+    let totalScore = 0;
 
     data.forEach(answer => {
       if (answer) {
-        this._totalScore += 2;
+        totalScore += 2;
       }
     })
-    return this._totalScore;
+    return totalScore;
   }
 
   /**
@@ -30,12 +30,12 @@ export class ScoreCalculator {
    */
   _convertToTime(sec) {
     let timeFormat = [
-      sec / 3600 % 24 | 0,  // h
-      sec / 60 % 60 | 0,    // m
-      sec % 60              // s
-    ]
-    .map(i =>  i < 10 ? '0' + i : i)
-    .join(':');
+        sec / 3600 % 24 | 0, // h
+        sec / 60 % 60 | 0, // m
+        sec % 60 // s
+      ]
+      .map(i => i < 10 ? '0' + i : i)
+      .join(':');
 
     return timeFormat;
   }

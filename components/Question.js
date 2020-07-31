@@ -1,4 +1,6 @@
-import {randomInteger} from './utils/utils.js';
+import {
+  randomInteger
+} from './utils/utils.js';
 
 
 /**
@@ -84,7 +86,7 @@ export class Question {
   }
   renderIconElements() {
     this._questionsAnswers.forEach((question) => {
-      if(question) {
+      if (question) {
         document.querySelector('.card__answer-icons').append(this._getIconTrueElement());
       } else {
         document.querySelector('.card__answer-icons').append(this.getIconFalseElement());
