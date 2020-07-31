@@ -1,6 +1,7 @@
 @import url('./__button/main__button.css');
 @import url('./__greeting/main__greeting.css');
 @import url('./__description/main__description.css');
+@import url('./__timer/main__timer.css');
 
 .main {
   flex-basis: 60%;

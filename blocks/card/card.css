@@ -4,6 +4,9 @@
 @import url('./__button-next/card__button-next.css');
 @import url('./__answer-icons/card__answer-icons.css');
 @import url('./__answer-icon/card__answer-icon.css');
+@import url('./__button-next/_disabled/card__button-next_disabled.css');
+@import url('./__counter/card__counter.css');
+@import url('./__timer/card__timer.css');
 
 .card {
   box-sizing: border-box;

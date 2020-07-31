@@ -1,5 +1,5 @@
 export default class Card {
-  constructor(container, handleButtonClick, res) {
+  constructor(container, handleButtonClick) {
     this._handleButtonClick = handleButtonClick;
     this._container = container;
   }
@@ -8,11 +8,13 @@ export default class Card {
   _render(titleText,descriptionText, buttonText) {
     const title = document.createElement('div');
     const description = document.createElement('div');
+    const timer = document.createElement('div');
     const start = document.createElement('button');
     title.className = 'main__greeting';
     title.innerHTML = titleText;
     description.className = 'main__description';
     description.innerHTML = descriptionText;
+    timer.className = 'main__timer';
     start.className = 'main__button';
     start.innerHTML = buttonText;
     start.addEventListener('click', () => {
@@ -20,6 +22,12 @@ export default class Card {
     });
     this._container.append(title);
     this._container.append(description);
+    this._container.append(timer);
+    if (start.textContent === 'Ещё раз') {
+      const timer = document.createElement('div');
+      timer.className = 'main__timer';
+      this._container.append(timer);
+    }
     this._container.append(start);
   }
 
@@ -27,7 +35,8 @@ export default class Card {
    * метод рендера титульного экрана с приветствием и в будущем с настройками
    */
   renderTitleMenu() {
-    this._render('Добро пожаловать в Quiz!', 'Для успешного прохождения теста наберите не меньше 8 очков, за каждый правильнвй ответ даётся 2 очка. Удачи!', 'Поехали!');
+    this._container.querySelector('.main__greeting').remove();
+    this._render('Добро пожаловать в Quiz!', 'Для успешного прохождения теста наберите не менее 8 очков, за каждый правильный ответ даётся 2 очка. Удачи!', 'Поехали!');
   }
 
   //метод рендера экрана с настройками
@@ -35,7 +44,7 @@ export default class Card {
 
   }
 
-  //рендер экрана с результатами , сокращу потом код
+  //рендер экрана с результатами
   renderResults(resultsArr) {
     let result = 0;
     resultsArr.forEach(answer => {
