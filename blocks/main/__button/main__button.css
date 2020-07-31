@@ -1,4 +1,5 @@
 .main__button {
+  -webkit-appearance: none;
   padding: 2rem 6rem;
   border-radius: 10px;
   font-size: 2rem;
