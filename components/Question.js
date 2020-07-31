@@ -1,3 +1,6 @@
+import {randomInteger} from './utils/utils.js';
+
+
 /**
  * Класс для рендера вопросов в разметку
  * @typedef {Object} Question
@@ -5,13 +8,14 @@
  */
 
 export class Question {
-  constructor(data) {
+  constructor(data, questionNumber, questionTotal = 5, questionsAnswers = []) {
     this._question = data.question;
     this._answers = Array.from(data.incorrect_answers);
     this._rightAnswer = data.correct_answer;
-    this._questionNumber = data.number;
-    this._questionTotal = data.total;
+    this._questionNumber = questionNumber;
+    this._questionTotal = questionTotal;
     this._userAnswer = false;
+    this._questionsAnswers = questionsAnswers;
   }
   _getQuestionTemplate() {
     return document
@@ -24,6 +28,20 @@ export class Question {
     return document
       .querySelector('#answer')
       .content
+      .cloneNode(true);
+  }
+  _getIconTrueElement() {
+    return document
+      .querySelector('#answer-icon-true')
+      .content
+      .querySelector('.answer-icon-true')
+      .cloneNode(true);
+  }
+  _getIconFalseElement() {
+    return document
+      .querySelector('#answer-icon-false')
+      .content
+      .querySelector('.answer-icon-false')
       .cloneNode(true);
   }
   /**
@@ -51,13 +69,27 @@ export class Question {
    */
   renderCard() {
     document.querySelector('.main').append(this._getQuestionElement());
+    let allAnswersElements = [];
     this._answers.forEach((answer) => {
-      document.querySelector('.card__answers').append(this._getAnswerElement(answer));
+      allAnswersElements.push(this._getAnswerElement(answer));
     });
     const rightAnswerElement = this._getAnswerElement(this._rightAnswer);
-    rightAnswerElement.querySelector('.card__answer').id = 'right';
-    document.querySelector('.card__answers').append(rightAnswerElement);
+    rightAnswerElement.querySelector('.card__answer').setAttribute('data-answer', 'right');
+    allAnswersElements.splice(randomInteger(0, 3), 0, rightAnswerElement);
+    allAnswersElements.forEach((element) => {
+      document.querySelector('.card__answers').append(element);
+    });
+    this.renderIconElements();
     this._addEventListeners();
+  }
+  renderIconElements() {
+    this._questionsAnswers.forEach((question) => {
+      if(question) {
+        document.querySelector('.card__answer-icons').append(this._getIconTrueElement());
+      } else {
+        document.querySelector('.card__answer-icons').append(this._getIconFalseElement());
+      }
+    });
   }
   /**
    * метод для запроса ответа пользователя правильный или нет
@@ -65,6 +97,13 @@ export class Question {
    */
   getUserAnswer() {
     return this._userAnswer;
+  }
+  /**
+   * метод для получения массива boolean с историей ответов пользователя
+   * @returns {Array}
+   */
+  getAnswersData() {
+    return this._questionsAnswers
   }
   /**
    * метод для установки слушателей на кнопки с ответами и доб цвета в зависимости
@@ -76,11 +115,15 @@ export class Question {
         if (evt.target.innerText == this._rightAnswer) {
           evt.target.classList.add('card__answer_green');
           this._userAnswer = true;
+          this._questionsAnswers.push(true);
+          document.querySelector('.card__answer-icons').append(this._getIconTrueElement());
           document.removeEventListener('click', this._questionClickHandler);
         } else {
           evt.target.classList.add('card__answer_red');
-          document.querySelector('#right').classList.add('card__answer_green');
-          //это мне самому не оч нравится, завтра подумаю как переделать
+          document.querySelector(`.card__answer[data-answer='right']`)
+            .classList.add('card__answer_green');
+          this._questionsAnswers.push(false);
+          document.querySelector('.card__answer-icons').append(this._getIconFalseElement());
           document.removeEventListener('click', this._questionClickHandler);
         }
       }
