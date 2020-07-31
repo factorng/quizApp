@@ -23,12 +23,17 @@
                 </ul>
             </menu>
         </header>
-        <main class="main"></main>
+        <main class="main">
+            <div class="main__greeting">Пожалуйста подождите...</div>
+        </main>
     </div>
 
    <template id="question">
     <div class="card">
-        <h2 class="card__question-title">Вопрос 5 из 5</h2>
+        <div class="card__counter">
+            <h2 class="card__question-title">Вопрос 5 из 5</h2>
+            <div class="card__timer"></div>
+        </div>
         <p class="card__question">Как можно объявить переменную в JavaScript?</p>
         <div class="card__answers"></div>
         <button class="card__button-next">Далее</button>
@@ -46,9 +51,5 @@
     <img class="card__answer-icon answer-icon-true" src="./images/Tick_Mark.svg" alt="верный ответ">
    </template>
    <script src="./pages/index.js" type="module"></script>
-<<<<<<< HEAD
-
-=======
->>>>>>> master
 </body>
 </html>

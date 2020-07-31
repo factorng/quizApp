@@ -8,3 +8,7 @@
   font-size: 1.8rem;
   cursor: pointer;
 }
+
+.card__button-next:hover {
+  opacity: .7;
+}
