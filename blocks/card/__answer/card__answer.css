@@ -17,8 +17,4 @@
 .card__answer_red {
   background-color: red;
 }
-.card__answer:hover {
-  background-color: black;
-  box-shadow: #fff 0px 0px 20px;
-  transition: all linear .3s;
-}
+
