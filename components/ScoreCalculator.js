@@ -1,7 +1,7 @@
 export class ScoreCalculator {
-  constructor(answerTimer, totalTimer, { handleNextCard }) {
-    this._answerTimer = document.querySelector(answerTimer); // селектор таймера ответа 30 секунд
-    this._totalTimer = document.querySelector(totalTimer); // селектор общего таймера
+  constructor({ handleNextCard }) {
+    // this._answerTimer = document.querySelector(answerTimer); // селектор таймера ответа 30 секунд
+    // this._totalTimer = document.querySelector(totalTimer); // селектор общего таймера
     this._handleNextCard = handleNextCard; // функция при окончании таймера ответа
   }
 
@@ -62,15 +62,17 @@ export class ScoreCalculator {
    *
    * @param {Number} countQuestions количество пройденных вопросов
    */
-  setTotalTimer(countQuestions) {
+  setTotalTimer(countQuestions, element) {
     this._total = 0;
 
     const timer = setInterval(() => {
       this._total++;
+      console.log(this._total);
+      console.log(`countQInCalc: ${countQuestions}`);
 
       if (countQuestions === 5) {
         clearInterval(timer);
-        this._totalTimer.textContent = this._convertToTime(this._total);
+        element.textContent = this._convertToTime(this._total);
       }
     }, 1000)
   }
