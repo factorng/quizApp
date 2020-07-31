@@ -1,11 +1,15 @@
 .main__button {
   -webkit-appearance: none;
+  -moz-appearance:    none;
+  appearance:         none;
   padding: 2rem 6rem;
   border-radius: 10px;
   font-size: 2rem;
   align-self: center;
   cursor: pointer;
   transition: opacity linear .2s;
+  background-color: #fff;
+  color: #000;
 }
 .main__button:hover {
   opacity: .7;
