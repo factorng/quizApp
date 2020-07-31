@@ -7,3 +7,9 @@
   background-color: black;
   box-sizing: border-box;
 }
+
+@media (max-width: 350px) {
+  .root {
+    padding: 0;
+  }
+}

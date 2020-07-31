@@ -29,3 +29,17 @@
 .card__answer_red {
   background-color: red;
 }
+
+@media (max-width: 550px) {
+  .card__answer {
+    margin: 1rem 0;
+    padding: 15px;
+  }
+}
+
+@media (max-width: 350px) {
+  .card__answer {
+    margin: .5rem 0;
+    padding: 10px;
+  }
+}
