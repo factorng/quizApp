@@ -14,3 +14,9 @@
   box-sizing: border-box;
   flex-basis: 30%;
 }
+
+@media (max-width: 750px) {
+  .header {
+    display: none;
+  }
+}
