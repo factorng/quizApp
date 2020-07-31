@@ -21,11 +21,6 @@ const api = new Api({
   url: 'https://opentdb.com'
 });
 
-
-
-const timer = new ScoreCalculator({handleNextCard: () => console.log('test timer')});
-
-
 api.getQuestion(10, 18, 'hard')
   .then(res => {
 
@@ -41,21 +36,15 @@ api.getQuestion(10, 18, 'hard')
       });
 
     const handleNextClick = (question) => {
-
       let answersArr = question.getAnswersData()
       if (countQuestions === 5) {
         document.querySelector('.card').remove();
         card.renderResults(answersArr);
-
-
       } else {
         countQuestions += 1;
         document.querySelector('.card').remove();
         newQuestion(res.results[countQuestions], countQuestions, answersArr);
-
       }
-      console.log(`countQ: ${countQuestions}`);
-      timer.setTotalTimer(countQuestions, document.querySelector('.testTimer'));
     }
 
     const timerFunction = (question) => {
@@ -78,7 +67,6 @@ api.getQuestion(10, 18, 'hard')
     card.renderTitleMenu();
 
 
-    // timer.setTotalTimer(countQuestions, document.querySelector('.testTimer'));
     function newQuestion(obj, questionNumber, answersArr) {
       const question = new Question(obj, questionNumber, 5, answersArr);
       question.renderCard();
@@ -98,7 +86,6 @@ api.getQuestion(10, 18, 'hard')
       buttonNext.setAttribute('disabled', 'disabled');
       buttonNext.classList.add('card__button-next_disabled');
       buttonNext.addEventListener('click', () => {
-
         handleNextClick(question);
       });
     }
