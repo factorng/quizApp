@@ -10,7 +10,8 @@ import {
 } from '../components/ScoreCalculator.js';
 import {
   cardsSelector,
-  buttonNextSelector
+  buttonNextSelector,
+  cardTimerSelector
 } from '../components/utils/constants.js';
 
 const cardsContainer = document.querySelector(cardsSelector);
@@ -34,6 +35,7 @@ api.getQuestion(10, 18, 'hard')
         countQuestions = 1;
         document.querySelector('.main__greeting').remove();
         document.querySelector('.main__description').remove();
+        document.querySelector('.main__timer').remove();
         document.querySelector('.main__button').remove();
         newQuestion(res.results[0], countQuestions, []);
       });
@@ -56,13 +58,45 @@ api.getQuestion(10, 18, 'hard')
       timer.setTotalTimer(countQuestions, document.querySelector('.testTimer'));
     }
 
-    card.renderTitleMenu()
+    const timerFunction = (question) => {
+      let answersArr = question.getAnswersData()
+      if (countQuestions === 5) {
+        countQuestions++;
+        document.querySelector('.card').remove();
+        card.renderResults(answersArr);
+      } else {
+        answersArr.push(false);
+        document.querySelector('.card__answer-icons').append(question.getIconFalseElement());
+        question.makeQuestionsInactive();
+        document.removeEventListener('click', question.questionClickHandler);
+        const buttonNext = document.querySelector(buttonNextSelector);
+        buttonNext.removeAttribute('disabled');
+        buttonNext.classList.remove('card__button-next_disabled');
+      }
+    }
+
+    card.renderTitleMenu();
+
 
     // timer.setTotalTimer(countQuestions, document.querySelector('.testTimer'));
     function newQuestion(obj, questionNumber, answersArr) {
       const question = new Question(obj, questionNumber, 5, answersArr);
       question.renderCard();
       const buttonNext = document.querySelector(buttonNextSelector);
+      const scoreCalculator = new ScoreCalculator(
+        buttonNext,
+        question,
+        (n) => {
+          timerFunction(question);
+        });
+        const total = 0;
+        if (countQuestions === 1) {
+        scoreCalculator.setTotalTimer(countQuestions, '.main__timer')
+        }
+      const cardTimer = document.querySelector(cardTimerSelector);
+      scoreCalculator.setAnswerTimer(cardTimer);
+      buttonNext.setAttribute('disabled', 'disabled');
+      buttonNext.classList.add('card__button-next_disabled');
       buttonNext.addEventListener('click', () => {
 
         handleNextClick(question);

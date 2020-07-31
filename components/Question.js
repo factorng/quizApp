@@ -8,7 +8,7 @@ import {randomInteger} from './utils/utils.js';
  */
 
 export class Question {
-  constructor(data, questionNumber, questionTotal = 5, questionsAnswers = []) {
+  constructor(data, questionNumber, questionTotal = 5, questionsAnswers = [true]) {
     this._question = data.question;
     this._answers = Array.from(data.incorrect_answers);
     this._rightAnswer = data.correct_answer;
@@ -37,7 +37,7 @@ export class Question {
       .querySelector('.answer-icon-true')
       .cloneNode(true);
   }
-  _getIconFalseElement() {
+  getIconFalseElement() {
     return document
       .querySelector('#answer-icon-false')
       .content
@@ -87,7 +87,7 @@ export class Question {
       if(question) {
         document.querySelector('.card__answer-icons').append(this._getIconTrueElement());
       } else {
-        document.querySelector('.card__answer-icons').append(this._getIconFalseElement());
+        document.querySelector('.card__answer-icons').append(this.getIconFalseElement());
       }
     });
   }
@@ -105,26 +105,36 @@ export class Question {
   getAnswersData() {
     return this._questionsAnswers
   }
+  makeQuestionsInactive() {
+    Array.from(document.querySelectorAll('.card__answer')).forEach((answer) => {
+      answer.classList.add('card__answer_inactive');
+    });
+  }
   /**
    * метод для установки слушателей на кнопки с ответами и доб цвета в зависимости
    * от ответа пользователя
    */
   _addEventListeners() {
-    document.addEventListener('click', this._questionClickHandler = (evt) => {
+    document.addEventListener('click', this.questionClickHandler = (evt) => {
       if (evt.target.classList.contains('card__answer')) {
+        const nextButton = document.querySelector('.card__button-next');
+        nextButton.classList.remove('card__button-next_disabled');
+        nextButton.removeAttribute('disabled');
         if (evt.target.innerText == this._rightAnswer) {
+          this.makeQuestionsInactive();
           evt.target.classList.add('card__answer_green');
           this._userAnswer = true;
           this._questionsAnswers.push(true);
           document.querySelector('.card__answer-icons').append(this._getIconTrueElement());
-          document.removeEventListener('click', this._questionClickHandler);
+          document.removeEventListener('click', this.questionClickHandler);
         } else {
+          this.makeQuestionsInactive();
           evt.target.classList.add('card__answer_red');
           document.querySelector(`.card__answer[data-answer='right']`)
             .classList.add('card__answer_green');
           this._questionsAnswers.push(false);
-          document.querySelector('.card__answer-icons').append(this._getIconFalseElement());
-          document.removeEventListener('click', this._questionClickHandler);
+          document.querySelector('.card__answer-icons').append(this.getIconFalseElement());
+          document.removeEventListener('click', this.questionClickHandler);
         }
       }
     });

@@ -1,0 +1,14 @@
+.card__button-next {
+  align-self: center;
+  padding: 1rem 3rem;
+  color: white;
+  background-color: black;
+  border-radius: 10px;
+  border: 0;
+  font-size: 1.8rem;
+  cursor: pointer;
+}
+
+.card__button-next:hover {
+  opacity: .7;
+}

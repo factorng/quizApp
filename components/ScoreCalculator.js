@@ -1,8 +1,10 @@
 export class ScoreCalculator {
-  constructor({ handleNextCard }) {
-    // this._answerTimer = document.querySelector(answerTimer); // селектор таймера ответа 30 секунд
-    // this._totalTimer = document.querySelector(totalTimer); // селектор общего таймера
+  constructor(buttonNext, question, handleNextCard) {
+    this._buttonNext = buttonNext;
+    this._question = question;
     this._handleNextCard = handleNextCard; // функция при окончании таймера ответа
+    this._mainContainer = document.querySelector('.main');
+    this._greeting = document.querySelector('.main__greeting');
   }
 
   /**
@@ -41,17 +43,19 @@ export class ScoreCalculator {
   /**
    * метод установки таймера ответа с обратным отсчетом, выставлен на 30 секунд
    */
-  setAnswerTimer() {
+  setAnswerTimer(answerTimer) {
     this._time = 31;
     const timer = setInterval(setSeconds.bind(this), 1000);
 
     function setSeconds() {
       this._time--;
-      this._answerTimer.textContent = this._time < 10 ? '0' + this._time : this._time;
+      answerTimer.textContent = this._time < 10 ? '0' + this._time : this._time;
 
       if (this._time === 0) {
         clearInterval(timer);
-        this._handleNextCard();
+        this._handleNextCard(this._question);
+      } else if (!this._buttonNext.classList.contains('card__button-next_disabled')) {
+        clearInterval(timer);
       }
     }
   }
@@ -62,17 +66,14 @@ export class ScoreCalculator {
    *
    * @param {Number} countQuestions количество пройденных вопросов
    */
-  setTotalTimer(countQuestions, element) {
+  setTotalTimer(countQuestions, totalTimer) {
     this._total = 0;
 
     const timer = setInterval(() => {
       this._total++;
-      console.log(this._total);
-      console.log(`countQInCalc: ${countQuestions}`);
-
-      if (countQuestions === 5) {
+      if (this._mainContainer.contains(this._greeting)) {
         clearInterval(timer);
-        element.textContent = this._convertToTime(this._total);
+        document.querySelector(totalTimer).textContent = this._convertToTime(this._total);
       }
     }, 1000)
   }

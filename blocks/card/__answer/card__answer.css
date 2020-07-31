@@ -1,0 +1,31 @@
+.card__answer {
+  display: block;
+  padding: 20px;
+  background-color: grey;
+  border-radius: 10px;
+  color: #fff;
+  font-size: 1.3rem;
+  margin: 3rem 0;
+  cursor: pointer;
+}
+
+.card__answer:hover {
+  opacity: .7;
+}
+
+.card__answer_inactive {
+  background-color: lightgray;
+}
+
+.card__answer_inactive:hover {
+  opacity: 1;
+  cursor: default;
+}
+
+.card__answer_green {
+  background-color: green;
+}
+
+.card__answer_red {
+  background-color: red;
+}
