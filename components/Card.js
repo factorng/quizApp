@@ -23,11 +23,6 @@ export default class Card {
     this._container.append(title);
     this._container.append(description);
     this._container.append(timer);
-    if (start.textContent === 'Ещё раз') {
-      const timer = document.createElement('div');
-      timer.className = 'main__timer';
-      this._container.append(timer);
-    }
     this._container.append(start);
   }
 
