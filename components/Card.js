@@ -51,7 +51,7 @@ export default class Card {
   renderResults(score) {
     if (score >= 8) {
       this._render('Поздравляем с успешным прохождением!', `Вы набрали ${score} из 10 баллов.`, 'Ещё раз');
-    } else if (score >= 5 && result < 8) {
+    } else if (score >= 5 && score < 8) {
       this._render('Надо ещё немного постараться.', `Вы набрали ${score} из 10 баллов.`, 'Ещё раз');
     } else {
       this._render('К сожалению вы проиграли...', `Вы набрали ${score} из 10 баллов.`, 'Ещё раз');
