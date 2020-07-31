@@ -79,7 +79,7 @@ api.getQuestion(10, 18, 'hard')
         });
         const total = 0;
         if (countQuestions === 1) {
-        scoreCalculator.setTotalTimer(countQuestions, '.main__timer')
+        scoreCalculator.setTotalTimer('.main__timer')
         }
       const cardTimer = document.querySelector(cardTimerSelector);
       scoreCalculator.setAnswerTimer(cardTimer);

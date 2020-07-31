@@ -4,7 +4,7 @@ export class ScoreCalculator {
     this._question = question;
     this._handleNextCard = handleNextCard; // функция при окончании таймера ответа
     this._mainContainer = document.querySelector('.main');
-    this._greeting = document.querySelector('.main__greeting');
+    this._greeting = document.querySelector('.main__timer');
   }
 
   /**
@@ -63,15 +63,12 @@ export class ScoreCalculator {
   /**
    * метод установки общего таймера, останавливается после прохождения всех вопросов
    * и записывает результат в ДОМ-элемент общего таймера
-   *
-   * @param {Number} countQuestions количество пройденных вопросов
    */
-  setTotalTimer(countQuestions, totalTimer) {
+  setTotalTimer(totalTimer) {
     this._total = 0;
-
     const timer = setInterval(() => {
       this._total++;
-      if (this._mainContainer.contains(this._greeting)) {
+      if (document.querySelector('.main').contains(document.querySelector('.main__timer'))) {
         clearInterval(timer);
         document.querySelector(totalTimer).textContent = this._convertToTime(this._total);
       }
