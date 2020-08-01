@@ -49,11 +49,6 @@ api.getQuestion(10, 18, 'hard')
 
     const timerFunction = (question) => {
       let answersArr = question.getAnswersData()
-      if (countQuestions === 5) {
-        countQuestions++;
-        document.querySelector('.card').remove();
-        card.renderResults(answersArr);
-      } else {
         answersArr.push(false);
         document.querySelector('.card__answer-icons').append(question.getIconFalseElement());
         question.makeQuestionsInactive();
@@ -61,7 +56,7 @@ api.getQuestion(10, 18, 'hard')
         const buttonNext = document.querySelector(buttonNextSelector);
         buttonNext.removeAttribute('disabled');
         buttonNext.classList.remove('card__button-next_disabled');
-      }
+
     }
 
     card.renderTitleMenu();
@@ -75,7 +70,7 @@ api.getQuestion(10, 18, 'hard')
         buttonNext,
         question,
         () => {
-          timerFunction(question);
+          timerFunction(question, scoreCalculator.calculateAnswerScore);
         });
       const total = 0;
       if (countQuestions === 1) {
